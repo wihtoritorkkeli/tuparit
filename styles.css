@@ -1,0 +1,55 @@
+html{
+    margin: 0px;
+    padding: 0px;
+  }
+  
+  body{
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    background: #000000;  /* fallback for old browsers */
+    background-image: linear-gradient(to right bottom, #0f0c29, #131433, #19193e, #1f1e49, #262454, #282656, #2a2858, #2c2a5a, #2a2953, #28274c, #262645, #24243e);
+  }
+  
+  .mainFlexContainer{
+    display: flex;
+    align-items: stretch;
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  .mainFlex1{
+    flex: 12.5%;
+    background-image: linear-gradient(to right bottom, #000000, #0e0e0e, #171717, #1f1f1f, #272727);
+    border-right: 1px solid white;
+    height: 100vh;
+    box-shadow: 1px 1px 10px 1px black;
+    color: white;
+  }
+  
+  .centerDiv{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mainFlex2{
+    flex: 87.5%;
+    color: white;
+  }
+  
+  .naviText{
+    color: black;
+    background-color: white;
+    padding: 10px 25px 10px 25px;
+    border-radius: 15px;
+    text-decoration: none;
+  }
+  
+  .peli{
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 2px black;
+  }
