@@ -14,8 +14,8 @@ if (innerWidth >= 1400){
     canvas.width = 1400;
     canvas.height = 800;
 }else{
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.width = 800;
+    canvas.height = 1000;
 }
 
 const backgroundImage = new Image;
