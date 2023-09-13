@@ -10,19 +10,38 @@
             <div class="mainFlex1">
                 <div class="centerDiv">
                     <ul>
-                        <li class="naviItem"><a>Game</a></li>
-                        <li class="naviItem"><a>Leaderboard</a></li>
+                        <li class="naviItem"><a href="index.html">Game</a></li>
+                        <li class="naviItem"><a href="">Leaderboard</a></li>
                     </ul>
                 </div>
             </div>
             <div class="mainFlex2">
                 <div class="centerDiv">
-                    <div class="player selection">
+                    <div class="playerSelection" id="playerSelection">
                         <h1>Player selection</h1>
+                        <form>
+                            <label for="teamName">Fill in your team name</label><br/>
+                            <input type="text" id="teamName">
+                            <button id="newGame">Start new game</button>
+                        </form>
                     </div>
                     <div>
-                        <canvas class="peli"></canvas>
+                        <canvas class="peli hide" id="peli"></canvas>
+                        <div class="endScreen hide" id="endScreen">
+                            <h1 class="h1-end">Game over</h1>
+                            <div class="scoreview">
+                                <p id="teamNameFill"></p>
+                                <p id="scoreFill"></p>
+                                <button id="returnHome" onclick="returnHome()">Return to players selection</button>
+                            </div>
+                        </div>
                         <script type="text/javascript" src="game.js"></script>
+                        <script type="text/javascript">
+                            function returnHome(){
+                                document.getElementById("playerSelection").classList.remove("hide");
+                                document.getElementById("endScreen").classList.add("hide");
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

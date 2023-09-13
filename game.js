@@ -1,6 +1,8 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
+let teamScores = [];
+
 if (innerWidth >= 1400){
     canvas.width = 1400;
     canvas.height = 800;
@@ -52,7 +54,7 @@ class Player{
     };
 
     draw(){
-        c.drawImage(this.img, this.position.x, this.position.y, playerWidth, playerHeight);
+        c.drawImage(this.img, this.position.x, this.position.y);
     };
 
     update(){
@@ -66,7 +68,7 @@ class Enemy{
     constructor(){
         this.position = {
             x : Math.floor(Math.random()* (canvas.width - 100) + 50),
-            y : -(Math.floor(Math.random()*(canvas.height + 500)))
+            y : -(Math.floor(Math.random()*canvas.height))
         }
         this.img = enemyShips[(Math.floor(Math.random()* enemyShips.length))]
         this.laserImg = enemyLasers[(Math.floor(Math.random()* enemyLasers.length))]
@@ -112,6 +114,7 @@ const playerWidth = 100;
 const playerHeight = 100;
 const playerVelocity = 3;
 
+var teamName;
 var score = 0;
 var lives = 5;
 var level = 1;
@@ -119,6 +122,7 @@ var enemyCount = 10;
 var gameLost = false;
 c.font = "30px serif";
 c.fillStyle = "white";
+let run;
 
 
 let players = []
@@ -134,7 +138,7 @@ function collision(player, enemy){
         player.position.x + playerWidth >= enemy.position.x &&
         enemy.position.x + 50 >= player.position.x &&
         player.position.y + playerHeight >= enemy.position.y &&
-        enemy.position.y + 50 > player.position.y
+        enemy.position.y + 100 > player.position.y
     ); 
 };
 
@@ -148,7 +152,7 @@ function laserCollision(player, enemy){
 };
 
 function animate(){
-    requestAnimationFrame(animate);
+    run = window.requestAnimationFrame(animate);
     c.clearRect(0,0,canvas.width, canvas.height);
     c.drawImage(backgroundImage, 0,0, canvas.width, canvas.height);    
     
@@ -202,8 +206,8 @@ function animate(){
 
     if (enemies.length === 0 && lives > 0){
         level += 1;
-        enemyCount += 2;
-        for(let i = 0; i <enemyCount; i++){
+        enemyCount += 5;
+        for(let i = 0; i < enemyCount; i++){
             enemies.push(new Enemy);
         }
     }
@@ -211,14 +215,14 @@ function animate(){
     if(lives <= 0 || players.length <= 0){
         gameLost = true;
         enemies = [];
+        window.cancelAnimationFrame(run);
+        document.getElementById("peli").classList.add("hide");
+        document.getElementById("scoreFill").innerHTML = `${score}`; 
+        document.getElementById("newGame").removeAttribute("disabled");
+        document.getElementById("endScreen").classList.remove("hide");
     }
     
-
-
 }
-
-
-animate();
 
 window.addEventListener("keypress", ({code})=>{
     switch(code){
@@ -267,3 +271,35 @@ window.addEventListener("keyup", ({code})=>{
             break;
     }
 });
+
+document.getElementById("newGame").addEventListener("click", function(){
+    if(document.getElementById("peli").classList.contains("hide")){
+        document.getElementById("peli").classList.remove("hide");
+    }
+    document.getElementById("playerSelection").classList.add("hide");
+    if(document.getElementById("endScreen").classList.contains("hide") === false){
+        document.getElementById("endScreen").classList.add("hide");
+    }
+    if(lives < 5){
+        lives = 5;
+    }
+    for(let i = 0; i < players.length; i++){
+        if(players[i].health < 100){
+            players[i].health = 100;
+        }
+    }
+    score = 0;
+    enemyCount = 10;
+    level = 1;
+    if(enemies.length === 0){
+        for(let i = 0; i < enemyCount; i++){
+            enemies.push(new Enemy);
+        }
+    }
+    document.getElementById("newGame").setAttribute("disabled","");
+    teamName = document.getElementById("teamName").value;
+    animate();
+    
+})
+
+    
