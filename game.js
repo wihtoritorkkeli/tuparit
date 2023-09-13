@@ -3,6 +3,13 @@ const c = canvas.getContext("2d");
 
 let teamScores = [];
 
+let haettu = JSON.parse(localStorage.getItem("tulokset"));
+if(haettu != null){
+    console.log(haettu);
+    teamScores = haettu;
+    console.log(teamScores);
+}
+
 if (innerWidth >= 1400){
     canvas.width = 1400;
     canvas.height = 800;
@@ -16,6 +23,8 @@ backgroundImage.src = "assets/bc.png";
 
 const playerImg = new Image;
 playerImg.src = "assets/pixel_ship_yellow.png";
+const aleksi = new Image;
+aleksi.src ="assets/space_aleksi.png";
 const playerLaser = new Image;
 playerLaser.src = "assets/pixel_laser_yellow.png";
 
@@ -54,7 +63,7 @@ class Player{
     };
 
     draw(){
-        c.drawImage(this.img, this.position.x, this.position.y);
+        c.drawImage(this.img, this.position.x, this.position.y, playerWidth, playerHeight);
     };
 
     update(){
@@ -110,8 +119,8 @@ const keys = {
     space : {pressed: false},
     N0 : {pressed: false}
 }
-const playerWidth = 100;
-const playerHeight = 100;
+const playerWidth = 150;
+const playerHeight = 105;
 const playerVelocity = 3;
 
 var teamName;
@@ -126,7 +135,7 @@ let run;
 
 
 let players = []
-players.push(new Player(500,500,playerImg));
+players.push(new Player(500,500,aleksi));
 
 let enemies = []
 for(let i = 0; i < 10; i++){
@@ -138,7 +147,7 @@ function collision(player, enemy){
         player.position.x + playerWidth >= enemy.position.x &&
         enemy.position.x + 50 >= player.position.x &&
         player.position.y + playerHeight >= enemy.position.y &&
-        enemy.position.y + 100 > player.position.y
+        enemy.position.y + 50 > player.position.y
     ); 
 };
 
@@ -220,6 +229,8 @@ function animate(){
         document.getElementById("scoreFill").innerHTML = `${score}`; 
         document.getElementById("newGame").removeAttribute("disabled");
         document.getElementById("endScreen").classList.remove("hide");
+        teamScores.push({"Team name:": teamName, "Team score": score});
+        localStorage.setItem("tulokset", JSON.stringify(teamScores));
     }
     
 }
@@ -245,7 +256,7 @@ window.addEventListener("keypress", ({code})=>{
     switch(code){
         case "Space":
             if(players[0] && players[0].laserList.length < players[0].laserLimit){
-                players[0].laserList.push(new Laser(players[0].position.x, players[0].position.y, playerLaser, -4));
+                players[0].laserList.push(new Laser(players[0].position.x + (playerWidth/2 - 50) , players[0].position.y, playerLaser, -4));
                 console.log("done");
             }
             break;
