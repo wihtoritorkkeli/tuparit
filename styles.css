@@ -57,3 +57,25 @@ html{
   .hide{
     display: none;
   }
+
+  table{
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px black;
+    color: black;
+    background-color: white;
+    width: 40vw;
+  }
+
+  thead{
+    border-bottom: 1px solid black;
+  }
+
+  td{
+    padding: 10px 20px 10px 20px;
+    border-top: 2px solid black;
+  }
+
+  th{
+    text-align: left;
+  }

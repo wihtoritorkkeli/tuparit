@@ -10,12 +10,12 @@ if(haettu != null){
     console.log(teamScores);
 }
 
-if (innerWidth >= 1400){
+if (innerWidth >= 1500){
     canvas.width = 1400;
     canvas.height = 800;
 }else{
-    canvas.width = 800;
-    canvas.height = 700;
+    canvas.width = 1000;
+    canvas.height = 600;
 }
 
 const backgroundImage = new Image;
