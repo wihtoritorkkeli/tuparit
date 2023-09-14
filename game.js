@@ -221,7 +221,7 @@ function animate(){
         }
     }
 
-    if(lives <= 0 || players.length <= 0){
+    if(lives <= 0 || players[0].health <= 0){
         gameLost = true;
         enemies = [];
         window.cancelAnimationFrame(run);
