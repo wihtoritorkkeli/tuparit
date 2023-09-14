@@ -15,7 +15,7 @@ if (innerWidth >= 1400){
     canvas.height = 800;
 }else{
     canvas.width = 800;
-    canvas.height = 1000;
+    canvas.height = 700;
 }
 
 const backgroundImage = new Image;
@@ -229,7 +229,7 @@ function animate(){
         document.getElementById("scoreFill").innerHTML = `${score}`; 
         document.getElementById("newGame").removeAttribute("disabled");
         document.getElementById("endScreen").classList.remove("hide");
-        teamScores.push({"Team name:": teamName, "Team score": score});
+        teamScores.push({team: teamName, teamScore: score});
         localStorage.setItem("tulokset", JSON.stringify(teamScores));
     }
     

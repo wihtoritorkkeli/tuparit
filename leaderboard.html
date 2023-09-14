@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Space Invaders</title>
+        <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="mainFlexContainer">
+            <div class="mainFlex1">
+                <div class="centerDiv">
+                    <ul>
+                        <li class="naviItem"><a href="index.html">Game</a></li>
+                        <li class="naviItem"><a href="">Leaderboard</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mainFlex2">
+                <div class="centerDiv">
+                    <div class="leaderboard">
+                        <h1 class="leaderboardTitle">Leaderboard:</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Position:</td>
+                                    <td>Team name:</td>
+                                    <td>Score:</td>
+                                </tr>
+                            </thead>
+                            <tbody id="fillTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                        let teamScores = [];
+                        let haettu = JSON.parse(localStorage.getItem("tulokset"));
+                        if(haettu != null){
+                            console.log(haettu);
+                            teamScores = haettu;
+                            updateLeaderboard(teamScores);
+                        }
+
+                        function updateLeaderboard(lista){
+                            let tableBody = document.getElementById("fillTable"), newRow, newCellPos, newCellName, newCellScore;
+
+                            tableBody.innerHTML = "";
+                            console.log(lista);
+
+                            for(let i = 0; i < lista.length ; i++){
+                                newRow = document.createElement("tr");
+                                tableBody.append(newRow);
+
+                                newCellPos = document.createElement("td");
+                                newCellName = document.createElement("td");
+                                newCellScore = document.createElement("td");
+
+                                newCellPos.textContent =`${i + 1}`;
+                                newRow.append(newCellPos);
+
+                                newCellName.textContent =`${lista[i].team}`;
+                                newRow.append(newCellName);
+
+                                newCellScore.textContent = `${lista[i].teamScore}`;
+                                newRow.append(newCellScore);
+
+                            };
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
