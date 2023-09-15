@@ -76,8 +76,8 @@ class Player{
 class Enemy{
     constructor(){
         this.position = {
-            x : Math.floor(Math.random()* (canvas.width - 100) + 50),
-            y : -(Math.floor(Math.random()*canvas.height))
+            x : Math.floor(Math.random()* (canvas.width - 150) + 50),
+            y : -(Math.floor(Math.random()*canvas.height + 100))
         }
         this.img = enemyShips[(Math.floor(Math.random()* enemyShips.length))]
         this.laserImg = enemyLasers[(Math.floor(Math.random()* enemyLasers.length))]
