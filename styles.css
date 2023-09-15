@@ -34,6 +34,7 @@ html{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
   }
   
   .mainFlex2{
@@ -79,4 +80,37 @@ html{
 
   th{
     text-align: left;
+  }
+
+  .playerListFlex{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+  }
+
+  img{
+    margin: 10px;
+    padding: 10px;
+    transition: 0.5s;
+    background-image: url(assets/bc.png);
+    border-radius: 15px;
+    border: 1px solid white;
+  }
+
+  img:hover{
+    scale: 1.1;
+  }
+
+  .startGame{
+    padding: 20px;
+  }
+
+  .startGame button{
+    padding: 10px 20px 10px 20px;
+    border-radius: 15px;
+  }
+
+  .selected{
+    border: 1px solid green;
+    scale: 1.1;
   }

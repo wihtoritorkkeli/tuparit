@@ -19,10 +19,12 @@
                 <div class="centerDiv">
                     <div class="playerSelection" id="playerSelection">
                         <h1>Player selection</h1>
-                        <form>
-                            <label for="teamName">Fill in your team name</label><br/>
-                            <input type="text" id="teamName">
-                            <button id="newGame">Start new game</button>
+                        <div id="playerList" class="playerListFlex"> 
+
+                        </div>
+                        <form class="startGame">
+                            <input type="text" id="teamName" class="hide">
+                            <button id="newGame" disabled>Start new game</button>
                         </form>
                     </div>
                     <div>
@@ -40,7 +42,54 @@
                             function returnHome(){
                                 document.getElementById("playerSelection").classList.remove("hide");
                                 document.getElementById("endScreen").classList.add("hide");
+                                selectedPlayer = "";
+                                for(let i in here){
+                                    if(document.getElementById(here[i]).classList.contains("selected")){
+                                                document.getElementById(here[i]).classList.remove("selected");
+                                            }
+                                }
+                                document.getElementById("newGame").setAttribute("disabled", "");
                             }
+
+                            const here = [
+                                "Aleksi",
+                                "Enna",
+                                "Sierra"
+                            ];
+
+                            let playerList = document.getElementById("playerList"), playerImage;
+
+                            playerList.innerHTML= "";
+
+                            let selectedPlayer;
+
+                            for(let i in here){
+                                playerImage = document.createElement("img");
+                                playerImage.src = `assets/space_${here[i]}.png`;
+                                playerImage.height = 140;
+                                playerImage.width = 200;
+                                playerImage.id = here[i];
+                                playerImage.onclick = function (){
+                                    document.getElementById("teamName").value = here[i];
+                                    selectedPlayer = here[i];
+                                    document.getElementById("newGame").removeAttribute("disabled");
+                                    console.log(selectedPlayer);
+                                    for(let j in here){
+                                        console.log(here[j]);
+                                        if(here[j] === selectedPlayer){
+                                            document.getElementById(here[j]).classList.add("selected");
+                                        }
+                                        else{
+                                            if(document.getElementById(here[j]).classList.contains("selected")){
+                                                document.getElementById(here[j]).classList.remove("selected");
+                                            }
+                                        }
+                                    }
+                                };
+                                playerList.append(playerImage);
+
+                            }
+
                         </script>
                     </div>
                 </div>

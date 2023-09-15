@@ -23,8 +23,8 @@ backgroundImage.src = "assets/bc.png";
 
 const playerImg = new Image;
 playerImg.src = "assets/pixel_ship_yellow.png";
-const aleksi = new Image;
-aleksi.src ="assets/space_aleksi.png";
+const pelaaja = new Image;
+pelaaja.src ="assets/space_aleksi.png";
 const playerLaser = new Image;
 playerLaser.src = "assets/pixel_laser_yellow.png";
 
@@ -135,7 +135,6 @@ let run;
 
 
 let players = []
-players.push(new Player(500,500,aleksi));
 
 let enemies = []
 for(let i = 0; i < 10; i++){
@@ -226,6 +225,7 @@ function animate(){
         enemies = [];
         window.cancelAnimationFrame(run);
         document.getElementById("peli").classList.add("hide");
+        document.getElementById("teamNameFill").innerHTML =`${teamName}:`;
         document.getElementById("scoreFill").innerHTML = `${score}`; 
         document.getElementById("newGame").removeAttribute("disabled");
         document.getElementById("endScreen").classList.remove("hide");
@@ -308,6 +308,8 @@ document.getElementById("newGame").addEventListener("click", function(){
     }
     document.getElementById("newGame").setAttribute("disabled","");
     teamName = document.getElementById("teamName").value;
+    pelaaja.src = `assets/space_${teamName}.png`;
+    players.push(new Player(500,500, pelaaja));
     animate();
     
 })
