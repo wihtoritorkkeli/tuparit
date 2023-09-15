@@ -80,8 +80,6 @@ class Enemy{
             y : -(Math.floor(Math.random()*canvas.height + 100))
         }
         this.img = enemyShips[(Math.floor(Math.random()* enemyShips.length))]
-        this.laserImg = enemyLasers[(Math.floor(Math.random()* enemyLasers.length))]
-        this.laserList = []
         this.velocity = 0.5
     }
 
