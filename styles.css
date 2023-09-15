@@ -85,6 +85,7 @@ html{
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
+    justify-content: center;
   }
 
   img{
@@ -95,6 +96,7 @@ html{
     border-radius: 15px;
     border: 2px solid white;
   }
+
 
   img:hover{
     transform: scale(1.1);
@@ -122,4 +124,8 @@ html{
   .selected{
     border: 2px solid greenyellow;
     transform: scale(1.1);
+  }
+
+  .playerSelection{
+    width: 75%;
   }
