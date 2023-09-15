@@ -231,6 +231,7 @@ function animate(){
         document.getElementById("endScreen").classList.remove("hide");
         teamScores.push({team: teamName, teamScore: score});
         localStorage.setItem("tulokset", JSON.stringify(teamScores));
+        players = [];
     }
     
 }
@@ -310,6 +311,7 @@ document.getElementById("newGame").addEventListener("click", function(){
     teamName = document.getElementById("teamName").value;
     pelaaja.src = `assets/space_${teamName}.png`;
     players.push(new Player(500,500, pelaaja));
+    document.getElementById("newGame").setAttribute("disabled", "");
     animate();
     
 })
