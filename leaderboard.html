@@ -37,6 +37,7 @@
                         if(haettu != null){
                             console.log(haettu);
                             teamScores = haettu;
+                            teamScores.sort((a,b)=>(a.teamScore > b.teamScore ? -1 : 1));
                             updateLeaderboard(teamScores);
                         }
 

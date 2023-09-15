@@ -94,7 +94,7 @@ html{
     transition: 0.5s;
     background-image: url(assets/bc.png);
     border-radius: 15px;
-    border: 1px solid white;
+    border: 2px solid white;
   }
 
   img:hover{
@@ -111,6 +111,6 @@ html{
   }
 
   .selected{
-    border: 1px solid green;
+    border: 2px solid greenyellow;
     scale: 1.1;
   }

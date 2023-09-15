@@ -21,8 +21,6 @@ if (innerWidth >= 1500){
 const backgroundImage = new Image;
 backgroundImage.src = "assets/bc.png";
 
-const playerImg = new Image;
-playerImg.src = "assets/pixel_ship_yellow.png";
 const pelaaja = new Image;
 pelaaja.src ="assets/space_aleksi.png";
 const playerLaser = new Image;
@@ -36,14 +34,10 @@ const greenShip = new Image;
 const greenlaser = new Image;
 
 blueShip.src = "assets/pixel_ship_blue_small.png";
-blueLaser.src = "assets/pixel_laser_blue.png";
 redShip.src = "assets/pixel_ship_red_small.png";
-redLaser.src ="assets/pixel_laser_red.png";
 greenShip.src = "assets/pixel_ship_green_small.png";
-greenlaser.src = "assets/pixel_laser_green.png";
 
 const enemyShips = [blueShip, redShip, greenShip];
-const enemyLasers = [blueLaser, redLaser, greenlaser];
 
 class Player{
     constructor(x,y,img){
