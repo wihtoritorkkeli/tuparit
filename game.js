@@ -257,7 +257,6 @@ window.addEventListener("keypress", ({code})=>{
         case "Space":
             if(players[0] && players[0].laserList.length < players[0].laserLimit){
                 players[0].laserList.push(new Laser(players[0].position.x + (playerWidth/2 - 50) , players[0].position.y, playerLaser, -4));
-                console.log("done");
             }
             break;
         case "Numpad0":
