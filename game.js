@@ -71,7 +71,7 @@ class Enemy{
     constructor(){
         this.position = {
             x : Math.floor(Math.random()* (canvas.width - 150) + 50),
-            y : -(Math.floor(Math.random()*canvas.height + 100))
+            y : -(Math.floor(Math.random()*(canvas.height*1.5) + 100))
         }
         this.img = enemyShips[(Math.floor(Math.random()* enemyShips.length))]
         this.velocity = 0.5
